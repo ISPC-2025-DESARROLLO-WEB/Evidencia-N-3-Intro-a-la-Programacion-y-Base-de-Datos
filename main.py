@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-#Registro de usuario (Adminitsrador o Publico)
-=======
+
 class Usuario:
     def __init__(self, id_usuario, nombre, email, contraseña, rol):
         self.id_usuario = id_usuario
@@ -10,7 +8,13 @@ class Usuario:
         self.rol = rol
 
     def ver_datos(self):
-        return f"Id_Usuario: {self.id_usuario}, Nombre: {self.nombre}, Email: {self.email}, Contraseña: {self.contraseña}, Rol: {self.rol}"
+        return (
+            f"Id_Usuario: {self.id_usuario}\n"
+            f"Nombre: {self.nombre}\n" 
+            f"Email: {self.email}\n" 
+            f"Contraseña: {self.contraseña}\n"
+            f"Rol: {self.rol}\n"
+            )
     
 class Sistema_De_Usuarios:
     def __init__(self):
@@ -38,31 +42,35 @@ class Sistema_De_Usuarios:
         
     def mostrar_usuarios(self):
         if self.usuarios == []:
-            return "No se ha registrado ningun usuario."
+            print("No se ha registrado ningun usuario.")
         
         else:
             print("---------- Listado de Usuarios ----------")
             for usuario in self.usuarios:
                 print(usuario.ver_datos())
+                print("------------")
 
     def cambiar_rol(self, id_usuario, nuevo_rol):
         for usuario in self.usuarios:
             if usuario.id_usuario == id_usuario:
                usuario.rol = nuevo_rol
                print(f"{nuevo_rol} es el nuevo rol del usuario {id_usuario}")
+               return
 
-        else:
-            print("ERROR!! Usuario no registrado")
+            else:
+                print("ERROR!! Usuario no registrado")
         
     def eliminar_usuario(self, id_usuario):
         for x, usuario in enumerate(self.usuarios):
             if usuario.id_usuario == id_usuario:
                eliminado = self.usuarios.pop(x)
-               return f"Se elimino al Usuario: {eliminado} con Id_usuario: {usuario.id_usuario}."
+               print (f"Se elimino al Usuario: {eliminado.nombre} con Id_usuario: {usuario.id_usuario}.")
+               return
 
         else:
-            return f"El Id_usuario: {id_usuario} no se encuentra registrado."
-        
+            print (f"El Id_usuario: {id_usuario} no se encuentra registrado.")
+    
+     
     def menu_interno(self, usuario):
         while True:
             print("---------- Seleccione su Rol ----------")
@@ -143,5 +151,4 @@ def menu_principal():
 
 menu_principal()
 
-#cambios
->>>>>>> feature/AgustinExequielGimenez
+

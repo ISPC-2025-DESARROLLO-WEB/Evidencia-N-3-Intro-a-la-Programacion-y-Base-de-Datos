@@ -158,3 +158,9 @@ menu_principal()
 #Implementar condicion para que solo acepte los roles (Administrador o Estandar)
 #Implemnetar condicion para que no se pueda iniciar sesion sin completar los campos (campos vacios)
 #Implementar condicion para que dos usuarios no posean el mismo id_usuario
+
+
+
+
+
+

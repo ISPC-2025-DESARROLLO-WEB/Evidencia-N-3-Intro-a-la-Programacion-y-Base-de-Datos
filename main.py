@@ -25,21 +25,37 @@ class Sistema_De_Usuarios:
          if id_usuario <= 0 or nombre == "" or email == "" or contraseña == "" or rol == "":
             return "ERROR!! Hay algunos campos invalidos."
          
+         if rol != "Administrador" and rol != "Estandar":
+             return "Rol no reconocido"
+         
          if contraseña != "" and len(contraseña) < 6:
             return "INVALIDA!! La contraseña debe contener como mínimo 6 caracteres."
+         
+         for usuario in self.usuarios:
+             if usuario.id_usuario == id_usuario:
+                 return "ERROR!! Ya existe un usuario con ese ID."
+             
+         for usuario in self.usuarios:
+             if usuario.email == email:
+                 return "ERROR!! Ya existe un usuario registrado con ese email."
         
          nuevo_usuario = Usuario(id_usuario, nombre, email, contraseña, rol) #Si las validaciones son correctas, crea unanueva instancia de usuario usando los datos proporcionados
          self.usuarios.append(nuevo_usuario) #Agrega el nuevo usuario a la lista de usuarios regsitrados
          return "EXCELENTE!! Usuario registrado."
         
     def iniciar_sesion(self, email, contraseña):
+        if email == "" or contraseña == "":
+            print("No se puede Iniciar Sesion. Campos Incompletos")
+            return None
+        
         for usuario in self.usuarios:
             if usuario.email == email and usuario.contraseña == contraseña: #Verifica si el email y la contraseña coinciden con los de un usuario registrado
                 print("--------------------------")
                 print(f"Inicio de sesión exitoso!! Bienvenido {usuario.nombre}")
                 return usuario
             
-        print("ERROR!! Contraseña u email incorrectos.")
+            print("ERROR!! Contraseña u email incorrecto.")    
+            return None
         
     def mostrar_usuarios(self):
         if self.usuarios == []:
@@ -156,8 +172,7 @@ def menu_principal():
 menu_principal()
 
 
-#Implementar condicion para que solo acepte los roles (Administrador o Estandar)
-#Implemnetar condicion para que no se pueda iniciar sesion sin completar los campos (campos vacios)
+
 #Implementar condicion para que dos usuarios no posean el mismo id_usuario.
 
 

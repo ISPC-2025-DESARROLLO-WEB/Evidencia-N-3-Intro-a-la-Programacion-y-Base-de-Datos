@@ -12,12 +12,11 @@ def menu_principal():
 
         match opcion:
             case "1":
-                 ingresar_id_usuario = int(input("Ingrese su Id_Usuario: "))
-                 ingresar_nombre = input("Ingrese su Nombre: ")
-                 ingresar_email = input("Ingrese su email: ")
-                 ingresar_contraseña = input("Ingrese una contraseña: ")
-                 ingresar_rol = input("Ingrese su rol: ")
-                 print(sistema.registrar_usuario(ingresar_id_usuario, ingresar_nombre, ingresar_email, ingresar_contraseña, ingresar_rol)) #llama al metodo registrar_usuario del objeto sistema para intentar crear el usuario con los datos ingresados
+                ingresar_nombre = input("Ingrese su Nombre: ")
+                ingresar_email = input("Ingrese su email: ")
+                ingresar_contraseña = input("Ingrese una contraseña: ")
+                ingresar_rol = input("Ingrese su rol (Administrador / Estandar): ")
+                print(sistema.registrar_usuario(ingresar_nombre, ingresar_email, ingresar_contraseña, ingresar_rol))  #llama al metodo registrar_usuario del objeto sistema para intentar crear el usuario con los datos ingresados
 
             case "2":
                  ingresar_email = input("Ingrese su email: ")

@@ -1,28 +1,45 @@
 class Usuario:
-    def __init__(self, nombre, email, contraseña, rol, id_usuario=None):
+    def __init__(self, id_usuario, nombre, email, contraseña, rol):
         
         self.__id_usuario = id_usuario  
-        self.nombre = nombre            
-        self.email = email              
+        self.__nombre = nombre            
+        self.__email = email              
         self.__contraseña = contraseña  
-        self.rol = rol                  
+        self.__rol = rol                  
 
-    @property
-    def id_usuario(self):
+    def get_id_usuario(self):
         return self.__id_usuario
+    
+    def get_nombre(self):
+        return self.__nombre
+    
+    def set_nombre(self, nombre):
+        self.__nombre = nombre
+
+    def get_email(self):
+        return self.__email
+    
+    def set_email(self, email):
+        self.__email = email
 
     def get_contraseña(self):
-        return "********"  
+        return self.__contraseña
+    
+    def set_contraseña(self, contraseña):
+        self.__contraseña = contraseña
 
-    def set_contraseña(self, nueva_contraseña):
-        self.__contraseña = nueva_contraseña
-
+    def get_rol(self):
+        return self.__rol
+    
+    def set_rol(self, rol):
+        self.__rol = rol
+    
     def ver_datos(self):
         print("----------- INFORMACION PERSONAL ----------")
         return (
-            f"Id_Usuario: {self.__id_usuario}\n"
-            f"Nombre: {self.nombre}\n"
-            f"Email: {self.email}\n"
+            f"Id_Usuario: {self.get_id_usuario()}\n"
+            f"Nombre: {self.get_nombre()}\n"
+            f"Email: {self.get_email()}\n"
             f"Contraseña: {self.get_contraseña()}\n"
-            f"Rol: {self.rol}\n"
+            f"Rol: {self.get_rol()}\n"
         )

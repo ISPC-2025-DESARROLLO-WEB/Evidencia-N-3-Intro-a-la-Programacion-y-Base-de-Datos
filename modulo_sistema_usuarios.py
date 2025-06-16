@@ -61,7 +61,7 @@ class Sistema_De_Usuarios:
         for x, usuario in enumerate(self.__usuarios):
             if usuario.get_id_usuario() == id_usuario:
                eliminado = self.__usuarios.pop(x)
-               print (f"Se elimino al Usuario: {eliminado.nombre} con numero de ID: {usuario.get_id_usuario()}.")
+               print (f"Se elimino al Usuario: {eliminado.get_nombre()} con numero de ID: {usuario.get_id_usuario()}.")
                return
 
         else:
@@ -103,12 +103,12 @@ class Sistema_De_Usuarios:
                          self.mostrar_usuarios()
 
                     case "3":
-                         id_usuario = int(input("Ingrese el Id del usuario a buscar: "))
+                         id_usuario = input("Ingrese el Id del usuario a buscar: ")
                          nuevo_rol = input("Ingrese el rol que le desea asiganr al usuario: ")
                          self.cambiar_rol(id_usuario, nuevo_rol)
 
                     case "4":
-                         id_usuario = int(input("Ingrese el Id del usuario a eliminar: "))
+                         id_usuario = input("Ingrese el Id del usuario a eliminar: ")
                          self.eliminar_usuario(id_usuario)
  
                     case "5":

@@ -16,7 +16,7 @@ class Sistema_De_Usuarios:
             return "INVALIDA!! La contraseña debe contener como mínimo 6 caracteres."
 
         for usuario in self.usuarios:
-            if usuario.email == email:
+            if usuario.get_email() == email:
                 return "ERROR!! Ya existe un usuario registrado con ese email."
 
         nuevo_usuario = Usuario(self.contador_id, nombre, email, contraseña, rol)
@@ -31,9 +31,9 @@ class Sistema_De_Usuarios:
             return None
 
         for usuario in self.usuarios:
-            if usuario.email == email and usuario.contraseña == contraseña:
+            if usuario.get_email() == email and usuario.get_contraseña() == contraseña:
                 print("--------------------------")
-                print(f"Inicio de sesión exitoso!! Bienvenido {usuario.nombre}")
+                print(f"Inicio de sesión exitoso!! Bienvenido {usuario.get_nombre()}")
                 return usuario
 
         print("ERROR!! Contraseña o email incorrecto.")    
@@ -49,17 +49,17 @@ class Sistema_De_Usuarios:
 
     def cambiar_rol(self, id_usuario, nuevo_rol):
         for usuario in self.usuarios:
-            if usuario.id_usuario == id_usuario:
-                usuario.rol = nuevo_rol
-                print(f"{nuevo_rol} es el nuevo rol del usuario {usuario.nombre} con número de ID: {id_usuario}")
+            if usuario.get_id_usuario() == id_usuario:
+                usuario._Usuario__rol = nuevo_rol  # Acceso directo porque no hay set_rol
+                print(f"{nuevo_rol} es el nuevo rol del usuario {usuario.get_nombre()} con número de ID: {id_usuario}")
                 return
         print("ERROR!! Usuario no registrado.")
 
     def eliminar_usuario(self, id_usuario):
         for x, usuario in enumerate(self.usuarios):
-            if usuario.id_usuario == id_usuario:
+            if usuario.get_id_usuario() == id_usuario:
                 eliminado = self.usuarios.pop(x)
-                print(f"Se eliminó al Usuario: {eliminado.nombre} con número de ID: {usuario.id_usuario}.")
+                print(f"Se eliminó al Usuario: {eliminado.get_nombre()} con número de ID: {eliminado.get_id_usuario()}.")
                 return
 
         print(f"El Id_usuario: {id_usuario} no se encuentra registrado.")
@@ -67,7 +67,7 @@ class Sistema_De_Usuarios:
     def menu_interno(self, usuario):
         while True:
             print("---------- MENU PRINCIPAL ----------")
-            if usuario.rol == "Estandar":
+            if usuario.get_rol() == "Estandar":
                 print("[1] Ver Información Personal.")
                 print("[2] Salir del Menú.")
                 opcion = input("Seleccione una de las opciones: ")
@@ -83,7 +83,7 @@ class Sistema_De_Usuarios:
                     case _:
                         print("ERROR!! Usted ingresó una opción no válida.")
 
-            elif usuario.rol == "Administrador":
+            elif usuario.get_rol() == "Administrador":
                 print("[1] Ver Información Personal.")
                 print("[2] Ver el Listado de Usuarios Registrados.")
                 print("[3] Cambiar el rol a un usuario.")

@@ -32,6 +32,4 @@ class Usuario:
             f"Email: {self.__email}\n"
             f"Rol: {self.__rol}\n"
         )
-
-   
     

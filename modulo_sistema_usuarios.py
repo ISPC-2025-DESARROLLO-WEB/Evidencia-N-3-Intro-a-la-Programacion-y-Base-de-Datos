@@ -28,7 +28,7 @@ class Sistema_De_Usuarios:
         
     def iniciar_sesion(self, email, contraseña):
         if email == "" or contraseña == "":
-            print("No se puede Iniciar Sesion. Campos Incompletos")
+            print("No se puede Iniciar Sesión. Campos incompletos.")
             return None
         
         for usuario in self.__usuarios:
@@ -64,10 +64,6 @@ class Sistema_De_Usuarios:
                print (f"Se elimino al Usuario: {eliminado.get_nombre()} con numero de ID: {usuario.get_id_usuario()}.")
                return
 
-        else:
-            print (f"El Id_usuario: {id_usuario} no se encuentra registrado.")
-    
-     
     def menu_interno(self, usuario):
         while True:
             print("---------- MENU PRINCIPAL ----------")
@@ -78,29 +74,29 @@ class Sistema_De_Usuarios:
 
                 match opcion:
                     case "1":
-                         print(usuario.ver_datos())
+                        print(usuario.ver_datos())
 
                     case "2":
-                         print("Usted salio del Menu.")
-                         break
-                    
+                        print("Usted salió del Menú.")
+                        break
+
                     case _:
-                        print("ERROR!! Usted ingreso una opcion no valida.")
+                        print("ERROR!! Usted ingresó una opción no válida.")
 
             elif usuario.get_rol() == "Administrador":
                 print("[1] Ver Informacion Personal.")
                 print("[2] Ver el Listado de Usuarios Registrados: ")
                 print("[3] Cambiar el rol a un usuario.")
                 print("[4] Eliminar a un usuario.")
-                print("[5] Salir del Menu.")
+                print("[5] Salir del Menú.")
                 opcion = input("Seleccione una opción: ")
 
                 match opcion:
                     case "1":
-                         print(usuario.ver_datos())
+                        print(usuario.ver_datos())
 
                     case "2":
-                         self.mostrar_usuarios()
+                        self.mostrar_usuarios()
 
                     case "3":
                          id_usuario = input("Ingrese el Id del usuario a buscar: ")
@@ -112,8 +108,8 @@ class Sistema_De_Usuarios:
                          self.eliminar_usuario(id_usuario)
  
                     case "5":
-                         print("Usted Salio del Menu.")
-                         break
+                        print("Usted salió del Menú.")
+                        break
 
                     case _:
-                         print("ERROR!! Usted ingreso una opcion no valida.")
+                        print("ERROR!! Usted ingresó una opción no válida.")

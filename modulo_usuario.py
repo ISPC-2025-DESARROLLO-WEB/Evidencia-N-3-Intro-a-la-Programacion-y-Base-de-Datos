@@ -35,7 +35,7 @@ class Usuario:
         self.__rol = rol
     
     def ver_datos(self):
-        print("----------- INFORMACION PERSONAL ----------")
+        print("----------- INFORMACIÓN PERSONAL ----------")
         return (
             f"Id_Usuario: {self.get_id_usuario()}\n"
             f"Nombre: {self.get_nombre()}\n"
@@ -43,3 +43,6 @@ class Usuario:
             f"Contraseña: {self.get_contraseña()}\n"
             f"Rol: {self.get_rol()}\n"
         )
+
+   
+    

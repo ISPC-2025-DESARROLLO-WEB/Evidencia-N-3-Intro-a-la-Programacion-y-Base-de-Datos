@@ -15,7 +15,13 @@ def menu_principal():
                 nombre = input("Ingrese su Nombre: ").strip()
                 email = input("Ingrese su Email: ").strip()
                 contraseña = input("Ingrese una Contraseña (mínimo 6 caracteres): ").strip()
-                rol = sistema.seleccionar_rol()  #  Rol con opciones claras
+                
+                while True:
+                    rol = input("Ingrese su rol (Administrador / Estandar): ").strip().capitalize()
+                    if rol in ["Administrador", "Estandar"]:
+                        break
+                    else:
+                        print("Rol inválido. Ingrese 'Administrador' o 'Estandar'.")
 
                 resultado = sistema.registrar_usuario(nombre, email, contraseña, rol)
                 print(resultado)
@@ -35,3 +41,5 @@ def menu_principal():
                 print("ERROR!! Usted ingresó una opción no válida.")
 
 menu_principal()
+
+

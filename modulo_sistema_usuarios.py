@@ -1,19 +1,5 @@
 from modulo_usuario import Usuario
 
-#Función para seleccionar el rol de forma segura
-def seleccionar_rol():
-    print("Seleccione el rol del usuario:")
-    print("[1] Administrador")
-    print("[2] Estandar")
-    while True:
-        opcion = input("Ingrese una opción (1 o 2): ")
-        if opcion == "1":
-            return "Administrador"
-        elif opcion == "2":
-            return "Estandar"
-        else:
-            print("Opción inválida. Por favor, seleccione 1 o 2.")
-
 class Sistema_De_Usuarios:
     def __init__(self):
         self.usuarios = []  # Lista para almacenar usuarios
@@ -22,6 +8,9 @@ class Sistema_De_Usuarios:
     def registrar_usuario(self, nombre, email, contraseña, rol):
         if nombre == "" or email == "" or contraseña == "" or rol == "":
             return "ERROR!! Hay algunos campos inválidos."
+
+        if rol not in ["Administrador", "Estandar"]:
+            return "Rol no reconocido. Debe ser 'Administrador' o 'Estandar'."
 
         if len(contraseña) < 6:
             return "INVALIDA!! La contraseña debe contener como mínimo 6 caracteres."
@@ -86,9 +75,11 @@ class Sistema_De_Usuarios:
                 match opcion:
                     case "1":
                         print(usuario.ver_datos())
+
                     case "2":
                         print("Usted salió del Menú.")
                         break
+
                     case _:
                         print("ERROR!! Usted ingresó una opción no válida.")
 
@@ -103,23 +94,28 @@ class Sistema_De_Usuarios:
                 match opcion:
                     case "1":
                         print(usuario.ver_datos())
+
                     case "2":
                         self.mostrar_usuarios()
+
                     case "3":
                         try:
                             id_usuario = int(input("Ingrese el ID del usuario a buscar: "))
-                            nuevo_rol = seleccionar_rol()
+                            nuevo_rol = input("Ingrese el nuevo rol del usuario: ")
                             self.cambiar_rol(id_usuario, nuevo_rol)
                         except ValueError:
                             print("ERROR: El ID debe ser numérico.")
+
                     case "4":
                         try:
                             id_usuario = int(input("Ingrese el ID del usuario a eliminar: "))
                             self.eliminar_usuario(id_usuario)
                         except ValueError:
                             print("ERROR: El ID debe ser numérico.")
+
                     case "5":
                         print("Usted salió del Menú.")
                         break
+
                     case _:
                         print("ERROR!! Usted ingresó una opción no válida.")

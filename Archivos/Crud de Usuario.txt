@@ -1,0 +1,36 @@
+
+/* Inserción de datos en la tabla Usuario */
+INSERT INTO Usuario (id_usuario, nombre, email, contrasena, rol) VALUES
+(1, 'Pablo Romero', 'pablolihuenromero@gmail.com', '1234pr', 'Administrador'),
+(2, 'Exequiel Gimenez', 'exequielgimenez@gmail.com', '45678eg', 'Administrador'),
+(3, 'Franco Gimenez', 'francogimenez@yahoo.com', '12356fg', 'Administrador'),
+(4, 'Guadalupe Turri', 'guadalupeturri@gmail.com', '545556gt', 'Estandar'),
+(5, 'Ivana Salinas', 'ivanasalinas@gmail.com', '55868is', 'Administrador'),
+(6, 'Claudia Mansillas', 'claudiamansilla@gmail.com', '593654cm', 'Estandar');
+
+/*Consulta para mostrar todos los usuarios Registrados*/
+-- READ (consultar usuarios)
+SELECT * FROM Usuario;
+
+-- Ver uno por id:
+SELECT * FROM Usuario WHERE id_usuario = 1;
+
+
+-- UPDATE (actualizar datos)
+-- Ejemplo: cambiar el rol del usuario con id 2
+UPDATE Usuario
+SET rol = 'Estandar' 
+WHERE id_usuario = 2;
+
+-- Ejemplo: cambiar contraseña del usuario con id 1
+UPDATE Usuario
+SET contrasena = 'nueva_contrasena123'
+WHERE id_usuario = 1;
+
+-- Ejemplo: cambiar correo del usuario con id 3
+UPDATE Usuario
+SET email = 'gimenezfranco582@gmail.com'
+WHERE id_usuario = 3;
+
+-- DELETE (eliminar usuario)
+DELETE FROM Usuario WHERE id_usuario = 1;

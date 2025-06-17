@@ -12,6 +12,7 @@ def menu_principal():
 
         match opcion:
             case "1":
+<<<<<<< HEAD
                 nombre = input("Ingrese su Nombre: ").strip()
                 email = input("Ingrese su Email: ").strip()
                 contraseña = input("Ingrese una Contraseña (mínimo 6 caracteres): ").strip()
@@ -25,6 +26,14 @@ def menu_principal():
 
                 resultado = sistema.registrar_usuario(nombre, email, contraseña, rol)
                 print(resultado)
+=======
+                 ingresar_id_usuario = input("Ingrese su Id_Usuario: ")
+                 ingresar_nombre = input("Ingrese su Nombre: ")
+                 ingresar_email = input("Ingrese su email: ")
+                 ingresar_contraseña = input("Ingrese una contraseña: ")
+                 ingresar_rol = input("Ingrese uno de los siguientes roles 'Administrador' o 'Estandar': ")
+                 print(sistema.registrar_usuario(ingresar_id_usuario, ingresar_nombre, ingresar_email, ingresar_contraseña, ingresar_rol)) #llama al metodo registrar_usuario del objeto sistema para intentar crear el usuario con los datos ingresados
+>>>>>>> 2a79fbdaae6d47a1fb296f5b2246b290a1f30139
 
             case "2":
                 email = input("Ingrese su Email: ").strip()
